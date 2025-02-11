@@ -1,0 +1,25 @@
+code--->
+class Solution {
+public:
+    int checkpalindrome(string&s,int start,int end){
+        int count=0;
+        while(start>=0 && end<s.length() && s[start]==s[end] ){
+                count++;
+                start--;
+                end++;
+        }
+        return count;
+    }
+    int countSubstrings(string s) {
+        int count=0;
+        for(int i=0;i<s.length();i++){
+            int oddkaans=checkpalindrome(s,i,i);
+            count=count+oddkaans;
+            int evenkaans=checkpalindrome(s,i,i+1);
+            count=count+evenkaans;
+        }
+        
+        return count;
+        
+    }
+};
