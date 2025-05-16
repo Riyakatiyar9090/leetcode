@@ -1,21 +1,32 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-       int i=0;
-       int k=0;
-       int j;
-       while(i<nums.size()){
-        for(j=i;j<nums.size();j++){
-            if(j+1>=nums.size()){
-                break;
-            }
-            if(nums[j]!=nums[j+1]){
-                break;
-            }
+        // i and j ko coompare kro agr vo equal hi to j++ kr do agr nhi hi to kth position pr nums[i] store kr do ur fir  i=j and j++ kr do ur fir akhiri me ek element reh jayega to uske liye loop ke bahr nums[k]=nums[i] store kr do q ki jo last element hi vo i pr hi j pr nhi hi q ki j++ hm kr chuke the
+    // int k=0;
+    // int i=0;
+    // int j=i+1;
+    // while(i<nums.size() && j<nums.size()){
+    //     if(nums[i]==nums[j]){
+    //         j++;
+    //     }
+    //     else if(nums[i]!=nums[j]){
+    //         nums[k]=nums[i];
+    //         k++;
+    //         i=j;
+    //         j++;
+    //     }
+    // }
+    // nums[k]=nums[i];
+    // k++;
+    // return k;
+    // another solution
+    int i=0;
+    for(int j=i+1;j<nums.size();j++){
+        if(nums[i]!=nums[j]){
+            nums[i+1]=nums[j];
+            i++;
         }
-        nums[k++]=nums[i];
-        i=j+1;
-       }
-       return k;
+    }
+    return i+1;
     }
 };
