@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+int majorityElement(vector<int> &nums)
+{
+    int cnt = 0;
+    int n = nums.size();
+    int element;
+    for (int i = 0; i < n; i++)
+    {
+        if (cnt == 0)
+        {
+            element = nums[i];
+        }
+        if (nums[i] == element)
+        {
+            cnt++;
+        }
+        else
+        {
+            cnt--;
+        }
+    }
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == element)
+        {
+            count++;
+        }
+    }
+    return element;
+}
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> arr1(n);
+  
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr1[i];
+    }
+  
+    int ans = majorityElement(arr1);
+    cout << ans << endl;
+  
+
+    return 0;
+}
