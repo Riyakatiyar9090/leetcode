@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+void rearrange(vector<int> &arr)
+{
+    // code here
+    vector<int> pos;
+    vector<int> nev;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] >= 0)
+        {
+            pos.push_back(arr[i]);
+        }
+        else
+        {
+            nev.push_back(arr[i]);
+        }
+    }
+    if (pos.size() > nev.size())
+    {
+        for (int i = 0; i < nev.size(); i++)
+        {
+            arr[2 * i] = pos[i];
+            arr[2 * i + 1] = nev[i];
+        }
+        int index = 2 * nev.size();
+        for (int i = nev.size(); i < pos.size(); i++)
+        {
+            arr[index++] = pos[i];
+        }
+    }
+    else
+    {
+        for (int i = 0; i < pos.size(); i++)
+        {
+            arr[2 * i] = pos[i];
+            arr[2 * i + 1] = nev[i];
+        }
+        int index = 2 * pos.size();
+        for (int i = pos.size(); i < nev.size(); i++)
+        {
+            arr[index++] = nev[i];
+        }
+    }
+}
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> arr1(n);
+    // vector<int> arr2(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr1[i];
+    }
+    // int k;
+    // cin >> k;
+    rearrange(arr1);
+    // cout << ans << endl;
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr1[i] << " ";
+    }
+
+    return 0;
+}
