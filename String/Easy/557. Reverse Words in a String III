@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        int n=s.length();
+        stringstream ss(s);
+        string word;
+        string t="";
+        while(ss>>word){
+            int p=word.length();
+            for(int i=0;i<p/2;i++){
+                char temp=word[i];
+                word[i]=word[p-i-1];
+                word[p-i-1]=temp;
+            }
+            t+=word;
+            t+=" ";
+        }
+        t.pop_back();
+        return t;
+    }
+};
