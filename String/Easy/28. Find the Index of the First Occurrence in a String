@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int n=haystack.length();
+        int m=needle.length();
+        for(int i=0;i<=n-m;i++){
+            int j=0;
+            while(j<m && haystack[i+j]==needle[j]){
+                j++;
+            }
+            if(j==m) return i;
+        }
+        return -1;
+    }
+};
+
+Steps:
+Loop through haystack from 0 → n-m
+For each index i, check:
+Does substring starting at i match needle?
+If match → return i
+If no match found → return -1
+
+⏱ Time Complexity:
+Worst case: O(n × m)
+(where n = haystack.length, m = needle.length)
